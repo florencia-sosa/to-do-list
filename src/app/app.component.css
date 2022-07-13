@@ -1,0 +1,13 @@
+
+
+.content-item{
+    border: 1px solid rgb(0 0 0 / 13%);
+    list-style-type: none;
+    border-radius: 8px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    background-color: #ffffff6e;
+}
