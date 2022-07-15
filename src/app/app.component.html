@@ -1,59 +1,60 @@
 <div class="container-bg p-4">
-  <!-- <h2>Hoy es:{{ date| date:'dd/MM/yyyy'}} </h2> -->
   <div class="container-percentage m-4">
     <app-welcome></app-welcome>
     <ng-container *ngIf="toDOListFinalized.size">
       <p>Tareas completadas:</p>
       <p id="percentage-text">{{percentage| number: '2.0-0'}}% </p>
     </ng-container>
-    <img src="../assets/img/woman.svg" alt="">
+    <!-- <ng-template #notToDoListTempleate>
+      <p>¿Qué tenemos por hacer?</p>
+    </ng-template> -->
+
+    <img src="../assets/img/undraw_completed_tasks_vs6q (1).svg" alt="">
   </div>
 
+  <!-- agregar tareas -->
   <div class="col-sm-9 col-md-6 m-4 ">
     <label class="form-label"><strong>Escribe una nueva tarea</strong> </label>
     <div class="d-flex">
       <input type="text" placeholder="Hacer las compras" class="form-control" [formControl]="item">
       <button [disabled]="item.invalid" class="btn btn-dark ms-3 btn-sm" (click)="addToDo()"> Añadir </button>
     </div>
-
-
-
   </div>
-  <div class="m-4">
-    <div class="row">
-      <div class="col-sm-12 col-lg-6">
-        <h2>Tareas por hacer</h2>
-        <ul class="list-group">
-          <ng-container *ngIf="toDOListNotFinalized.size === 0">
-            <p>No tenes tareas pendientes :) </p>
-          </ng-container>
-          <ng-container *ngFor="let toDo of (toDOListNotFinalized | keyvalue)">
-            <li class="content-item"> {{toDo.value.value}}
-              <div class="action">
-                <button (click)="deleteItem(toDo.value)">
-                  <img src="../assets/img/trash.svg" class="trash" alt=""></button>
-                <button (click)="markToDoAsFinalized(toDo.value)"><img
-                    src="../assets/img/check-box-unchecked-svgrepo-com.svg" alt=""></button>
-                <ng-container *ngIf="toDo.value.status === 'finalized'">
-                  <img class="check" src="../assets/img/check.svg" alt="">
-                </ng-container>
-              </div>
-            </li>
-          </ng-container>
-        </ul>
-      </div>
+  <!-- listas de tareas -->
 
-      <div class="col-sm-12 col-lg-6">
-        <div class="d-flex justify-content-between">
-          <h2>Tareas Finalizadas</h2>
-          <button class="btn btn-dark btn-sm mr" (click)="deleteList()"> Eliminar lista</button>
-        </div>
-        <ul class="list-group">
-          <li class="content-item" *ngFor="let itemFinalized of (toDOListFinalized | keyvalue)"> <del>
-              {{itemFinalized.value.value}} </del>
+  <div class="row m-4">
+    <div class="col-sm-12 col-lg-6">
+      <h2>Tareas por hacer</h2>
+      <ul class="list-group">
+        <ng-container *ngIf="toDOListNotFinalized.size === 0">
+          <p>No tenes tareas pendientes :) </p>
+        </ng-container>
+        <ng-container *ngFor="let toDo of (toDOListNotFinalized | keyvalue)">
+          <li class="content-item"> {{toDo.value.value}}
+            <div class="action">
+              <button (click)="deleteItem(toDo.value)">
+                <img src="../assets/img/trash.svg" class="trash" alt=""></button>
+              <button (click)="markToDoAsFinalized(toDo.value)"><img
+                  src="../assets/img/check-box-unchecked-svgrepo-com.svg" alt=""></button>
+              <ng-container *ngIf="toDo.value.status === 'finalized'">
+                <img class="check" src="../assets/img/check.svg" alt="">
+              </ng-container>
+            </div>
           </li>
-        </ul>
+        </ng-container>
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+      <div class="d-flex justify-content-between">
+        <h2>Tareas Finalizadas</h2>
+        <button class="btn btn-dark btn-sm mr" (click)="deleteList()"> Eliminar lista</button>
       </div>
+      <ul class="list-group">
+        <li class="content-item" *ngFor="let itemFinalized of (toDOListFinalized | keyvalue)"> <del>
+            {{itemFinalized.value.value}} </del>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

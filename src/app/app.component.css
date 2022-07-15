@@ -10,21 +10,20 @@ blanco:#FFFFFF */
 }
 .container-percentage {
   position: relative;
-  max-width: 500px;
+  max-width: 415px;
   height: 150px;
   border-radius: 12px;
-  display: flex;
-  background-color: rgba(227, 218, 206, 0.47);
+  background-color: rgb(227 218 206 / 15%);
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
-  box-shadow: 1px 4px 16px 8px rgba(181, 157, 132, 0.39);
+  box-shadow: 1px 4px 16px 8px rgb(139 108 77 / 41%);
 }
 .container-percentage > img {
   position: absolute;
-  width: 260px;
-  bottom: -46px;
-  right: -18px;
+  width: 195px;
+  bottom: 5px;
+  right: -5px;
 }
 .container-percentage > p {
   padding: 0;
