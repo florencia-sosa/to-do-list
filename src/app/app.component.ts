@@ -9,9 +9,9 @@ import { AbstractControl, FormControl, ValidationErrors, ValidatorFn, Validators
 export class AppComponent implements OnInit {
   public toDOListNotFinalized!: Map<number, ToDo>;
   public toDOListFinalized!: Map<number, ToDo>;
-  public percentage = 0 ;
+  public percentage = 0;
 
-  public date =  new Date();
+  public date = new Date();
 
   public item = new FormControl('', toDoValueValidator());
 
@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
       const firstElement = Array.from(this.toDOListFinalized.keys())[0];
       this.toDOListFinalized.delete(firstElement)
     }
-   
+
   }
 
   public deleteItem(item: ToDo) {
@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     this.percentageOfTasksCompleted();
     this.saveToLocalStorage();
   }
-  public deleteList():void{
+  public deleteList(): void {
     this.toDOListFinalized.clear()
     this.saveToLocalStorage()
     this.percentageOfTasksCompleted();
@@ -81,10 +81,7 @@ export class AppComponent implements OnInit {
     const a = this.toDOListNotFinalized.size ?? 0;
     const b = this.toDOListFinalized.size ?? 0;
     const total = a + b;
-
-     this.percentage = (b * 100) / total
-    console.log('total:', total, 'resueltas:', b, 'no resueltas', a, this.percentage)
-
+    this.percentage = (b * 100) / total
   }
 }
 

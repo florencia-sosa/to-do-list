@@ -6,16 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-  public user: string | any = ''
+  public user: string | any = 'usuario'
   constructor() { }
 
   ngOnInit(): void {
-   this.user = localStorage.getItem('user') ?? this.saveUser()
+    this.user = localStorage.getItem('user') ?? this.newUser()
   }
 
-  public saveUser(): void {
+  public newUser() {
     this.user = prompt("¿Cómo te llamas?");
+    if (this.user === '') {
+      this.user = 'usuario'
+    }
     localStorage.setItem('user', this.user);
+    return this.user
   }
 
 }
