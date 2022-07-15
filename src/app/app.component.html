@@ -2,8 +2,10 @@
   <!-- <h2>Hoy es:{{ date| date:'dd/MM/yyyy'}} </h2> -->
   <div class="container-percentage m-4">
     <app-welcome></app-welcome>
-    <p>Tareas completadas:</p>
-    <p id="percentage-text">{{percentage| number: '2.0-0'}}% </p>
+    <ng-container *ngIf="toDOListNotFinalized.size">
+      <p>Tareas completadas:</p>
+      <p id="percentage-text">{{percentage| number: '2.0-0'}}% </p>
+    </ng-container>
     <img src="../assets/img/woman.svg" alt="">
   </div>
 
@@ -12,10 +14,10 @@
     <div class="d-flex">
       <input type="text" placeholder="Hacer las compras" class="form-control" [formControl]="item">
       <button [disabled]="item.invalid" class="btn btn-dark ms-3 btn-sm" (click)="addToDo()"> Añadir </button>
-    </div>  
+    </div>
 
 
-    
+
   </div>
   <div class="m-4">
     <div class="row">
